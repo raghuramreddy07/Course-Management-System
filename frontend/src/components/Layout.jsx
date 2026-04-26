@@ -14,6 +14,13 @@ export default function Layout() {
           ? "/admin"
           : "/dashboard";
 
+  const profilePath =
+    user?.role === "Student"
+      ? "/student/profile/create"
+      : user?.role === "Instructor"
+        ? "/instructor/profile/create"
+        : null;
+
   const roleBadge =
     user?.role === "Admin"
       ? "bg-violet-100 text-violet-800 ring-violet-200"
@@ -57,6 +64,14 @@ export default function Layout() {
                 >
                   Dashboard
                 </Link>
+                {profilePath && (
+                  <Link
+                    to={profilePath}
+                    className="btn-secondary !py-2 !px-3 text-xs sm:text-sm border-amber-200 text-amber-800 hover:border-amber-300 hover:bg-amber-50"
+                  >
+                    Profile
+                  </Link>
+                )}
                 <button
                   type="button"
                   onClick={() => {

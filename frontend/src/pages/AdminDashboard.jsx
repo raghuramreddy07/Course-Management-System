@@ -1,6 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
 import api from "../api/axios.js";
 
+const formatPrice = (price) => `Rs. ${Number(price ?? 499).toLocaleString("en-IN")}`;
+
 export default function AdminDashboard() {
   const [users, setUsers] = useState([]);
   const [courses, setCourses] = useState([]);
@@ -149,6 +151,7 @@ export default function AdminDashboard() {
             >
               <h3 className="font-display text-lg font-semibold text-slate-900">{c.title}</h3>
               <p className="text-sm text-slate-600 mt-2 line-clamp-2 leading-relaxed">{c.description}</p>
+              <p className="mt-3 text-sm font-semibold text-slate-950">{formatPrice(c.price)}</p>
               <p className="text-xs font-medium text-slate-500 mt-4 flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-violet-500" />
                 {c.instructorId?.name || "Instructor"}

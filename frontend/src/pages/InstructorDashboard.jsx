@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import { Link } from "react-router-dom";
 import api from "../api/axios.js";
 
 function typeBadge(type) {
@@ -10,12 +11,15 @@ function typeBadge(type) {
   return map[type] || "bg-slate-100 text-slate-700 ring-slate-200";
 }
 
+const formatPrice = (price) => `Rs. ${Number(price ?? 499).toLocaleString("en-IN")}`;
+
 export default function InstructorDashboard() {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("499");
   const [creating, setCreating] = useState(false);
   const [expanded, setExpanded] = useState(null);
   const [materials, setMaterials] = useState({});
@@ -49,9 +53,10 @@ export default function InstructorDashboard() {
     setCreating(true);
     setErr("");
     try {
-      await api.post("/api/courses", { title: title.trim(), description });
+      await api.post("/api/courses", { title: title.trim(), description, price });
       setTitle("");
       setDescription("");
+      setPrice("499");
       await loadCourses();
     } catch (e) {
       setErr(e.response?.data?.message || "Could not create course");
@@ -157,6 +162,9 @@ export default function InstructorDashboard() {
         <p className="mt-2 text-slate-600 max-w-2xl">
           Shape your curriculum, publish materials, and follow learner submissions from one place.
         </p>
+        <Link to="/instructor/profile/create" className="btn-secondary mt-5 text-sm !py-2">
+          Create or update profile
+        </Link>
         <div className="mt-6 h-px max-w-xs bg-gradient-to-r from-amber-400 via-brand-400 to-transparent rounded-full" />
       </header>
 
@@ -177,6 +185,22 @@ export default function InstructorDashboard() {
             <h2 className="font-display text-lg font-semibold text-slate-900">Create a new course</h2>
             <p className="text-xs text-slate-500">You can add materials after the course exists.</p>
           </div>
+        </div>
+        <div>
+          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">
+            Price
+          </label>
+          <input
+            className="input-field"
+            type="number"
+            min="0"
+            max="5000"
+            step="1"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            placeholder="499"
+          />
+          <p className="mt-1 text-xs text-slate-500">Keep it student-friendly. Suggested range: Rs. 299 to Rs. 999.</p>
         </div>
         <div>
           <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">
@@ -212,7 +236,15 @@ export default function InstructorDashboard() {
           >
             <div className="p-5 sm:p-6 flex flex-wrap items-start justify-between gap-4">
               <div className="min-w-0 flex-1">
-                <h3 className="font-display text-lg font-semibold text-slate-900">{c.title}</h3>
+                <div className="flex flex-wrap items-center gap-2">
+                  <h3 className="font-display text-lg font-semibold text-slate-900">{c.title}</h3>
+                  <span className="badge bg-teal-100 text-teal-800 ring-1 ring-teal-200">
+                    {c.enrolledCount || 0} enrolled
+                  </span>
+                  <span className="badge bg-amber-100 text-amber-900 ring-1 ring-amber-200">
+                    {formatPrice(c.price)}
+                  </span>
+                </div>
                 <p className="text-sm text-slate-600 mt-2 leading-relaxed">{c.description}</p>
               </div>
               <div className="flex flex-wrap gap-2 shrink-0">

@@ -25,7 +25,7 @@ export const enroll = async (req, res, next) => {
       courseId,
     });
     const populated = await Enrollment.findById(enrollment._id)
-      .populate("courseId", "title description instructorId")
+      .populate("courseId", "title description price instructorId")
       .populate("studentId", "name email");
     res.status(201).json(populated);
   } catch (err) {

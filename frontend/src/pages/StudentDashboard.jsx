@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import { Link } from "react-router-dom";
 import api from "../api/axios.js";
 
 function typeBadge(type) {
@@ -9,6 +10,8 @@ function typeBadge(type) {
   };
   return map[type] || "bg-slate-100 text-slate-700 ring-slate-200";
 }
+
+const formatPrice = (price) => `Rs. ${Number(price ?? 499).toLocaleString("en-IN")}`;
 
 function Spinner() {
   return (
@@ -122,6 +125,9 @@ export default function StudentDashboard() {
         <p className="mt-2 text-slate-600 max-w-2xl">
           Browse the catalog, join courses, and open materials whenever you are ready to study.
         </p>
+        <Link to="/student/profile/create" className="btn-secondary mt-5 text-sm !py-2">
+          Create or update profile
+        </Link>
         <div className="mt-6 h-px max-w-xs bg-gradient-to-r from-brand-400 via-accent-400 to-transparent rounded-full" />
       </header>
 
@@ -148,11 +154,24 @@ export default function StudentDashboard() {
                 <div className="absolute top-4 right-4 h-8 w-8 rounded-lg bg-gradient-to-br from-brand-500/10 to-accent-500/10 opacity-0 transition group-hover:opacity-100" />
                 <h3 className="font-display text-lg font-semibold text-slate-900 pr-10">{c.title}</h3>
                 <p className="text-sm text-slate-600 mt-2 line-clamp-2 leading-relaxed">{c.description}</p>
-                <p className="text-xs font-medium text-slate-500 mt-3 flex items-center gap-1.5">
+                <p className="mt-3 text-lg font-semibold text-slate-950">{formatPrice(c.price)}</p>
+                <Link
+                  to={`/student/instructors/${c.instructorId?._id || c.instructorId}`}
+                  className="text-xs font-semibold text-slate-500 mt-3 inline-flex items-center gap-1.5 hover:text-teal-700"
+                >
                   <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand-500" />
-                  {c.instructorId?.name || "Instructor"}
+                  {c.instructorId?.name || "Instructor profile"}
+                </Link>
+                <p className="mt-2 text-xs font-semibold uppercase text-slate-400">
+                  {c.enrolledCount || 0} students enrolled
                 </p>
                 <div className="mt-5 flex flex-wrap gap-2">
+                  <Link
+                    to={`/student/instructors/${c.instructorId?._id || c.instructorId}`}
+                    className="btn-secondary text-sm !py-2 !px-4"
+                  >
+                    View instructor profile
+                  </Link>
                   {!isIn ? (
                     <button
                       type="button"

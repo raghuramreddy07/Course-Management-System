@@ -8,6 +8,9 @@ import Register from "./pages/Register.jsx";
 import StudentDashboard from "./pages/StudentDashboard.jsx";
 import InstructorDashboard from "./pages/InstructorDashboard.jsx";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
+import StudentProfileCreate from "./pages/StudentProfileCreate.jsx";
+import InstructorProfileCreate from "./pages/InstructorProfileCreate.jsx";
+import InstructorProfileView from "./pages/InstructorProfileView.jsx";
 
 function DashboardRedirect() {
   const { user } = useAuth();
@@ -56,10 +59,34 @@ export default function App() {
           }
         />
         <Route
+          path="/student/profile/create"
+          element={
+            <ProtectedRoute roles={["Student"]}>
+              <StudentProfileCreate />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/instructors/:id"
+          element={
+            <ProtectedRoute roles={["Student"]}>
+              <InstructorProfileView />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/instructor"
           element={
             <ProtectedRoute roles={["Instructor"]}>
               <InstructorDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/instructor/profile/create"
+          element={
+            <ProtectedRoute roles={["Instructor"]}>
+              <InstructorProfileCreate />
             </ProtectedRoute>
           }
         />

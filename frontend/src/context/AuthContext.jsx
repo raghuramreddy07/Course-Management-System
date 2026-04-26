@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import api from "../api/axios.js";
 
 const AuthContext = createContext(null);
@@ -8,17 +8,10 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   const loadUser = useCallback(async () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      setUser(null);
-      setLoading(false);
-      return;
-    }
     try {
-      const { data } = await api.get("/api/auth/me");
+      const { data } = await api.get("/api/auth/me", { skipAuthRedirect: true });
       setUser(data.user);
     } catch {
-      localStorage.removeItem("token");
       setUser(null);
     } finally {
       setLoading(false);
@@ -29,23 +22,33 @@ export function AuthProvider({ children }) {
     loadUser();
   }, [loadUser]);
 
+  useEffect(() => {
+    const handleUnauthorized = () => {
+      setUser(null);
+    };
+
+    window.addEventListener("auth:unauthorized", handleUnauthorized);
+    return () => window.removeEventListener("auth:unauthorized", handleUnauthorized);
+  }, []);
+
   const login = async (email, password) => {
     const { data } = await api.post("/api/auth/login", { email, password });
-    localStorage.setItem("token", data.token);
     setUser(data.user);
     return data.user;
   };
 
   const register = async (payload) => {
     const { data } = await api.post("/api/auth/register", payload);
-    localStorage.setItem("token", data.token);
     setUser(data.user);
     return data.user;
   };
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    setUser(null);
+  const logout = async () => {
+    try {
+      await api.post("/api/auth/logout");
+    } finally {
+      setUser(null);
+    }
   };
 
   return (
