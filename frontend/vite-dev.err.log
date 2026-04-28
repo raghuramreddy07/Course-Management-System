@@ -1,0 +1,134 @@
+[2m9:32:08 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\src\pages\InstructorDashboard.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (231:6)
+
+[0m [90m 229 |[31m       [33m<[31m[33m/[31m[33mform[31m[33m>[31m
+ [90m 230 |[31m
+[31m[1m>[22m[31m[90m 231 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"mb-5 flex items-end justify-between gap-4"[31m[33m>[31m
+ [90m     |[31m       [31m[1m^[22m[31m
+ [90m 232 |[31m         [33m<[31m[33mdiv[31m[33m>[31m
+ [90m 233 |[31m           [33m<[31m[33mp[31m className[33m=[31m[32m"text-xs font-semibold uppercase tracking-widest text-slate-400"[31m[33m>[31m[33mCourse[31m manager[33m<[31m[33m/[31m[33mp[31m[33m>[31m
+ [90m 234 |[31m           [33m<[31m[33mh2[31m className[33m=[31m[32m"font-display text-2xl font-semibold text-slate-900"[31m[33m>[31m[33mYour[31m courses[33m<[31m[33m/[31m[33mh2[31m[33m>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/dinni/OneDrive/Desktop/Projects/course management system/frontend/src/pages/InstructorDashboard.jsx[39m:231:6
+[33m  232|          <div>
+  233|            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">Course manager</p>
+  234|            <h2 className="font-display text-2xl font-semibold text-slate-900">Your courses</h2>
+     |                                          ^
+  235|          </div>
+  236|          <span className="rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-semibold text-slate-500 shadow-sm">[39m
+      at constructor (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at JSXParserMixin.raise (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:6599:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4742:18)
+      at JSXParserMixin.jsxParseElement (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10800:39
+      at JSXParserMixin.allowInAnd (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:12493:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11675:28)
+      at JSXParserMixin.parseExprAtom (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4764:20)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOpBaseRightExpr (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10986:34)
+      at JSXParserMixin.parseExprOpRightExpr (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10981:21)
+      at JSXParserMixin.parseExprOp (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10947:27)
+      at JSXParserMixin.parseExprOps (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10908:17)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10784:23)
+      at C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10780:39
+      at JSXParserMixin.allowInAnd (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:12426:12)
+      at JSXParserMixin.parseExpression (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10780:17)
+      at JSXParserMixin.jsxParseExpressionContainer (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4632:31)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4711:36)
+      at JSXParserMixin.jsxParseElement (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10800:39
+      at JSXParserMixin.allowInAnd (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:12493:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11675:28)
+      at JSXParserMixin.parseExprAtom (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11331:23)
+[2m9:32:08 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\src\pages\InstructorDashboard.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (231:6)
+
+[0m [90m 229 |[31m       [33m<[31m[33m/[31m[33mform[31m[33m>[31m
+ [90m 230 |[31m
+[31m[1m>[22m[31m[90m 231 |[31m       [33m<[31m[33mdiv[31m className[33m=[31m[32m"mb-5 flex items-end justify-between gap-4"[31m[33m>[31m
+ [90m     |[31m       [31m[1m^[22m[31m
+ [90m 232 |[31m         [33m<[31m[33mdiv[31m[33m>[31m
+ [90m 233 |[31m           [33m<[31m[33mp[31m className[33m=[31m[32m"text-xs font-semibold uppercase tracking-widest text-slate-400"[31m[33m>[31m[33mCourse[31m manager[33m<[31m[33m/[31m[33mp[31m[33m>[31m
+ [90m 234 |[31m           [33m<[31m[33mh2[31m className[33m=[31m[32m"font-display text-2xl font-semibold text-slate-900"[31m[33m>[31m[33mYour[31m courses[33m<[31m[33m/[31m[33mh2[31m[33m>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/dinni/OneDrive/Desktop/Projects/course management system/frontend/src/pages/InstructorDashboard.jsx[39m:231:6
+[33m  232|          <div>
+  233|            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">Course manager</p>
+  234|            <h2 className="font-display text-2xl font-semibold text-slate-900">Your courses</h2>
+     |                                          ^
+  235|          </div>
+  236|          <span className="rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-semibold text-slate-500 shadow-sm">[39m
+      at constructor (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at JSXParserMixin.raise (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:6599:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4742:18)
+      at JSXParserMixin.jsxParseElement (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10800:39
+      at JSXParserMixin.allowInAnd (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:12493:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11675:28)
+      at JSXParserMixin.parseExprAtom (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4764:20)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOpBaseRightExpr (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10986:34)
+      at JSXParserMixin.parseExprOpRightExpr (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10981:21)
+      at JSXParserMixin.parseExprOp (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10947:27)
+      at JSXParserMixin.parseExprOps (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10908:17)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10784:23)
+      at C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10780:39
+      at JSXParserMixin.allowInAnd (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:12426:12)
+      at JSXParserMixin.parseExpression (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10780:17)
+      at JSXParserMixin.jsxParseExpressionContainer (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4632:31)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4711:36)
+      at JSXParserMixin.jsxParseElement (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10800:39
+      at JSXParserMixin.allowInAnd (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:12493:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11675:28)
+      at JSXParserMixin.parseExprAtom (C:\Users\dinni\OneDrive\Desktop\Projects\course management system\frontend\node_modules\@babel\parser\lib\index.js:11331:23)

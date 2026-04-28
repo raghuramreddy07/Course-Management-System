@@ -13,6 +13,23 @@ function typeBadge(type) {
 
 const formatPrice = (price) => `Rs. ${Number(price ?? 499).toLocaleString("en-IN")}`;
 
+const instructorInitial = (name) => name?.trim()?.slice(0, 1)?.toUpperCase() || "I";
+
+function InstructorAvatar({ instructor }) {
+  const avatarUrl = instructor?.profile?.avatarUrl;
+  const name = instructor?.name || "Instructor";
+
+  return (
+    <span className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-brand-100 via-white to-teal-100 text-base font-bold text-brand-700 ring-1 ring-slate-200">
+      {avatarUrl ? (
+        <img src={avatarUrl} alt={name} className="h-full w-full object-cover" />
+      ) : (
+        instructorInitial(name)
+      )}
+    </span>
+  );
+}
+
 function Spinner() {
   return (
     <div className="flex justify-center py-16">
@@ -57,6 +74,10 @@ export default function StudentDashboard() {
   const enrolledIds = new Set(
     enrollments.map((e) => (e.courseId?._id || e.courseId)?.toString?.() || String(e.courseId))
   );
+  const selectedMaterialCourse = materialCourseId
+    ? courses.find((course) => course._id === materialCourseId)
+    : null;
+  const visibleCourses = selectedMaterialCourse ? [selectedMaterialCourse] : courses;
 
   const enroll = async (courseId) => {
     setActionLoading(`enroll-${courseId}`);
@@ -139,38 +160,86 @@ export default function StudentDashboard() {
 
       <section className="mb-12">
         <div className="flex items-end justify-between gap-4 mb-5">
-          <h2 className="font-display text-xl font-semibold text-slate-900">Course catalog</h2>
-          <span className="text-xs font-medium text-slate-500">{courses.length} available</span>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">
+              {selectedMaterialCourse ? "Selected course" : "Course catalog"}
+            </p>
+            <h2 className="font-display text-xl font-semibold text-slate-900">
+              {selectedMaterialCourse ? selectedMaterialCourse.title : "Course catalog"}
+            </h2>
+          </div>
+          {selectedMaterialCourse ? (
+            <button
+              type="button"
+              onClick={() => {
+                setMaterialCourseId(null);
+                setMaterials([]);
+                setSubs([]);
+                setSubmitFor(null);
+                setFile(null);
+              }}
+              className="btn-secondary text-sm !py-2 !px-4"
+            >
+              Back to courses
+            </button>
+          ) : (
+            <span className="text-xs font-medium text-slate-500">{courses.length} available</span>
+          )}
         </div>
-        <div className="grid gap-5 sm:grid-cols-2">
-          {courses.map((c) => {
+        <div className={selectedMaterialCourse ? "grid gap-5" : "grid gap-5 sm:grid-cols-2"}>
+          {visibleCourses.map((c) => {
             const id = c._id;
             const isIn = enrolledIds.has(id);
+            const instructor = c.instructorId;
+            const instructorPath = `/student/instructors/${instructor?._id || instructor}`;
             return (
               <article
                 key={id}
-                className="group relative rounded-lg border border-slate-200/90 bg-white/90 p-5 shadow-card backdrop-blur-sm transition hover:border-brand-200 hover:shadow-glow"
+                className="group relative overflow-hidden rounded-lg border border-slate-200/90 bg-white/95 p-5 shadow-card backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-glow"
               >
-                <div className="absolute top-4 right-4 h-8 w-8 rounded-lg bg-gradient-to-br from-brand-500/10 to-accent-500/10 opacity-0 transition group-hover:opacity-100" />
-                <h3 className="font-display text-lg font-semibold text-slate-900 pr-10">{c.title}</h3>
-                <p className="text-sm text-slate-600 mt-2 line-clamp-2 leading-relaxed">{c.description}</p>
-                <p className="mt-3 text-lg font-semibold text-slate-950">{formatPrice(c.price)}</p>
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-400 via-teal-300 to-amber-300 opacity-80" />
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0">
+                    <h3 className="font-display text-xl font-semibold text-slate-900">{c.title}</h3>
+                    <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-slate-600">{c.description}</p>
+                  </div>
+                  <span className="shrink-0 rounded-lg bg-slate-950 px-3 py-1.5 text-sm font-bold text-white shadow-md shadow-slate-900/15">
+                    {formatPrice(c.price)}
+                  </span>
+                </div>
                 <Link
-                  to={`/student/instructors/${c.instructorId?._id || c.instructorId}`}
-                  className="text-xs font-semibold text-slate-500 mt-3 inline-flex items-center gap-1.5 hover:text-teal-700"
+                  to={instructorPath}
+                  className="mt-5 flex items-center gap-3 rounded-lg border border-slate-100 bg-slate-50/80 p-3 transition hover:border-brand-200 hover:bg-brand-50/60"
                 >
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand-500" />
-                  {c.instructorId?.name || "Instructor profile"}
+                  <InstructorAvatar instructor={instructor} />
+                  <span className="min-w-0">
+                    <span className="block text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                      Instructor
+                    </span>
+                    <span className="block truncate text-sm font-semibold text-slate-900">
+                      {instructor?.name || "Instructor profile"}
+                    </span>
+                    <span className="mt-0.5 block truncate text-xs text-slate-500">
+                      {instructor?.profile?.headline || instructor?.profile?.department || "View profile"}
+                    </span>
+                  </span>
                 </Link>
-                <p className="mt-2 text-xs font-semibold uppercase text-slate-400">
-                  {c.enrolledCount || 0} students enrolled
-                </p>
-                <div className="mt-5 flex flex-wrap gap-2">
+                <div className="mt-4 flex items-center justify-between gap-3 border-t border-slate-100 pt-4">
+                  <p className="text-xs font-semibold uppercase text-slate-400">
+                    {c.enrolledCount || 0} students enrolled
+                  </p>
+                  {isIn && (
+                    <span className="badge bg-emerald-100 text-emerald-800 ring-1 ring-emerald-200">
+                      Enrolled
+                    </span>
+                  )}
+                </div>
+                <div className="mt-4 grid gap-2 sm:grid-cols-2">
                   <Link
-                    to={`/student/instructors/${c.instructorId?._id || c.instructorId}`}
+                    to={instructorPath}
                     className="btn-secondary text-sm !py-2 !px-4"
                   >
-                    View instructor profile
+                    View instructor
                   </Link>
                   {!isIn ? (
                     <button
@@ -181,16 +250,12 @@ export default function StudentDashboard() {
                     >
                       {actionLoading === `enroll-${id}` ? "Joining…" : "Enroll now"}
                     </button>
-                  ) : (
-                    <span className="badge bg-emerald-100 text-emerald-800 ring-1 ring-emerald-200">
-                      Enrolled
-                    </span>
-                  )}
+                  ) : null}
                   {isIn && (
                     <button
                       type="button"
                       onClick={() => openMaterials(id)}
-                      className="btn-secondary text-sm !py-2 !px-4"
+                      className="btn-primary text-sm !py-2 !px-4"
                     >
                       {materialCourseId === id ? "Refresh materials" : "View materials"}
                     </button>
@@ -212,7 +277,9 @@ export default function StudentDashboard() {
         <section className="rounded-lg border border-slate-200/90 bg-white/95 p-6 sm:p-8 shadow-glow backdrop-blur-sm">
           <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
             <div>
-              <h2 className="font-display text-xl font-semibold text-slate-900">Course materials</h2>
+              <h2 className="font-display text-xl font-semibold text-slate-900">
+                {selectedMaterialCourse?.title || "Course"} materials
+              </h2>
               <p className="text-sm text-slate-500 mt-1">Videos, notes, and assignments for this course</p>
             </div>
             <button
@@ -220,10 +287,13 @@ export default function StudentDashboard() {
               onClick={() => {
                 setMaterialCourseId(null);
                 setMaterials([]);
+                setSubs([]);
+                setSubmitFor(null);
+                setFile(null);
               }}
               className="btn-secondary text-sm !py-2"
             >
-              Close panel
+              Back to courses
             </button>
           </div>
           <ul className="divide-y divide-slate-100 rounded-lg border border-slate-100 overflow-hidden bg-slate-50/50">

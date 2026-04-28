@@ -13,6 +13,8 @@ function typeBadge(type) {
 
 const formatPrice = (price) => `Rs. ${Number(price ?? 499).toLocaleString("en-IN")}`;
 
+const courseInitial = (title) => title?.trim()?.slice(0, 1)?.toUpperCase() || "C";
+
 export default function InstructorDashboard() {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -224,45 +226,59 @@ export default function InstructorDashboard() {
         </button>
       </form>
 
-      <div className="flex items-end justify-between gap-4 mb-5">
-        <h2 className="font-display text-xl font-semibold text-slate-900">Your courses</h2>
-        <span className="text-xs font-medium text-slate-500">{courses.length} total</span>
+      <div className="mb-5 flex items-end justify-between gap-4">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">Course manager</p>
+          <h2 className="font-display text-2xl font-semibold text-slate-900">Your courses</h2>
+        </div>
+        <span className="rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-semibold text-slate-500 shadow-sm">
+          {courses.length} total
+        </span>
       </div>
-      <div className="space-y-5">
+      <div className="grid gap-5">
         {courses.map((c) => (
           <div
             key={c._id}
-            className="rounded-lg border border-slate-200/90 bg-white/95 shadow-card overflow-hidden backdrop-blur-sm transition hover:border-slate-300"
+            className="group overflow-hidden rounded-lg border border-slate-200/90 bg-white/95 shadow-card backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-amber-200 hover:shadow-glow"
           >
-            <div className="p-5 sm:p-6 flex flex-wrap items-start justify-between gap-4">
-              <div className="min-w-0 flex-1">
-                <div className="flex flex-wrap items-center gap-2">
-                  <h3 className="font-display text-lg font-semibold text-slate-900">{c.title}</h3>
-                  <span className="badge bg-teal-100 text-teal-800 ring-1 ring-teal-200">
-                    {c.enrolledCount || 0} enrolled
+            <div className="h-1 bg-gradient-to-r from-amber-400 via-brand-400 to-teal-300" />
+            <div className="p-5 sm:p-6">
+              <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+                <div className="flex min-w-0 gap-4">
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-100 via-white to-brand-100 text-xl font-bold text-amber-800 ring-1 ring-amber-200">
+                    {courseInitial(c.title)}
                   </span>
-                  <span className="badge bg-amber-100 text-amber-900 ring-1 ring-amber-200">
-                    {formatPrice(c.price)}
-                  </span>
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="font-display text-xl font-semibold text-slate-900">{c.title}</h3>
+                      <span className="badge bg-teal-100 text-teal-800 ring-1 ring-teal-200">
+                        {c.enrolledCount || 0} enrolled
+                      </span>
+                      <span className="badge bg-amber-100 text-amber-900 ring-1 ring-amber-200">
+                        {formatPrice(c.price)}
+                      </span>
+                    </div>
+                    <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">{c.description}</p>
+                  </div>
                 </div>
-                <p className="text-sm text-slate-600 mt-2 leading-relaxed">{c.description}</p>
-              </div>
-              <div className="flex flex-wrap gap-2 shrink-0">
-                <button
-                  type="button"
-                  onClick={() => toggleCourse(c._id)}
-                  className="btn-secondary text-sm !py-2 !px-4"
-                >
-                  {expanded === c._id ? "Collapse" : "Manage"}
-                </button>
-                <button
-                  type="button"
-                  disabled={busy === `del-${c._id}`}
-                  onClick={() => deleteCourse(c._id)}
-                  className="btn-danger text-sm !py-2"
-                >
-                  Delete
-                </button>
+
+                <div className="flex shrink-0 flex-wrap gap-2 lg:justify-end">
+                  <button
+                    type="button"
+                    onClick={() => toggleCourse(c._id)}
+                    className={expanded === c._id ? "btn-primary text-sm !py-2 !px-4" : "btn-secondary text-sm !py-2 !px-4"}
+                  >
+                    {expanded === c._id ? "Close tools" : "Manage"}
+                  </button>
+                  <button
+                    type="button"
+                    disabled={busy === `del-${c._id}`}
+                    onClick={() => deleteCourse(c._id)}
+                    className="btn-danger text-sm !py-2 !px-4"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
 
